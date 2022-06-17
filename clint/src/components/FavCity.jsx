@@ -1,24 +1,22 @@
 import React from 'react'
 import styled from "styled-components";
 
-function FavCity() {
-
-    const [data, setData] = React.useState([])
-
-
-
-  
-
+function FavCity({ Favdata }) {
   return (
     <>
-      <button >Save</button>
-      <Container>
-        {/* <h4>City - {data.name}</h4>
-        <h4>Temp - {data.main.temp} F </h4>
-        <h4>Humidity - {data.main.humidity} %</h4>
-        <h4>pressure - {data.main.pressure} pa</h4>
-        <h4>Wind speed - {data.wind.speed.toFixed()} MPH</h4> */}
-      </Container>
+ 
+   {
+   Favdata.map((data) => (
+         <Container>
+           <h4>City - {data.city}</h4>
+           <h4>Temp - {data.Temp} F </h4>
+           <h4>Humidity - {data.Humidity} %</h4>
+           <h4>pressure - {data.pressure} pa</h4>
+           <h4>Wind speed - {data.windSpeed} MPH</h4>
+         </Container>
+       
+   ))
+   }
     </>
   );
 }
@@ -33,4 +31,5 @@ export const Container = styled.div`
   margin-top: 20px;
   margin-left: 40px;
   line-height: 3px;
+  
 `;

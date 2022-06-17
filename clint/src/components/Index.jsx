@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Display } from "./Display";
 import "./styles.css";
+import FavCity from "./FavCity"
 
 export const Weather = () => {
   const [city, setCity] = useState("");
   const [data, setData] = useState({});
   const [Favdata, FavsetData] = React.useState([]);
+  const [show, setShow] = useState(true)
+
   let API_KEY = "f0c9028e7c3e8f6e8a48994673470066";
 
   useEffect(() => {
@@ -44,8 +47,12 @@ export const Weather = () => {
         value={city}
         onChange={(e) => setCity(e.target.value)}
       />
+      <br />
+      <button onClick={() => setShow(!show)}>Show Fav_city</button>
+      {data.name !== undefined && <Display data={data} />}
 
-      {data.name != undefined && <Display data={data} />}
+      
+      {show && <FavCity Favdata={Favdata} />}
     </>
   );
 };
